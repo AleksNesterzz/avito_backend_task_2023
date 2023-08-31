@@ -50,6 +50,14 @@ func New(userchanger UserChanger) http.HandlerFunc {
 
 			return
 		}
+		if errors.Is(err, storage.ErrSegNotExists) {
+			w.WriteHeader(http.StatusBadRequest)
+			render.JSON(w, r, Response{
+				Status: "error",
+				Error:  "segment not exists"})
+
+			return
+		}
 		if errors.Is(err, storage.ErrUserNotFound) {
 			w.WriteHeader(http.StatusBadRequest)
 			render.JSON(w, r, Response{

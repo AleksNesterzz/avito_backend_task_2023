@@ -107,7 +107,6 @@ func (s *Storage) DeleteSeg(name string) (int64, error) {
 	for fields.Next() {
 		var temp int
 		fields.Scan(&temp)
-		fmt.Println(temp)
 		_, err := s.ChangeUser([]string{}, []string{name}, temp)
 		if err != nil {
 			fmt.Println("error executing insert for cascade delete")
@@ -162,6 +161,9 @@ func (s *Storage) ChangeUser(addSeg []string, delSeg []string, id int) (string, 
 			if pqErr.Constraint == "clients_pkey" {
 				return "", fmt.Errorf("pkey constraint %w", storage.ErrSegExists)
 			}
+			if pqErr.Constraint == "clients_seg_fkey" {
+				return "", fmt.Errorf("fkey constraint %w", storage.ErrSegNotExists)
+			}
 			return "", fmt.Errorf("error executing inserting %w", err)
 		}
 		_, err = stmt_log.Exec(id, "add", addSeg[i], time.Now())
@@ -170,13 +172,12 @@ func (s *Storage) ChangeUser(addSeg []string, delSeg []string, id int) (string, 
 		}
 	}
 	for i := 0; i < len(delSeg); i++ {
-		_, err := stmt_del.Exec(id, delSeg[i])
+		res, err := stmt_del.Exec(id, delSeg[i])
 		if err != nil {
-			pqErr := err.(*pq.Error)
-			if pqErr.Constraint == "clients_pkey" {
-				return "", fmt.Errorf("pkey constraint %w", storage.ErrSegExists)
-			}
-			return "", fmt.Errorf("error executing inserting %w", err)
+			return "", fmt.Errorf("error executing deleting %w", err)
+		}
+		if rows, _ := res.RowsAffected(); rows == 0 {
+			return "", fmt.Errorf("user has no such segment %w", storage.ErrUserNotFound)
 		}
 		_, err = stmt_log.Exec(id, "del", delSeg[i], time.Now())
 		if err != nil {

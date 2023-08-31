@@ -53,7 +53,7 @@ func New(loggetter LogGetter) http.HandlerFunc {
 			return
 		}
 		id_string := strconv.Itoa(req.Id)
-		path_to_file := "../csv_output/logs" + id_string + "-" + req.Time + ".csv"
+		path_to_file := "./csv_output/logs" + id_string + "-" + req.Time + ".csv"
 		f2, err := os.OpenFile(path_to_file, os.O_CREATE|os.O_WRONLY, 0644)
 		if err != nil {
 			fmt.Println(err)
