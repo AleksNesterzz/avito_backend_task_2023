@@ -41,7 +41,7 @@
 4. Get-запрос для получения сегментов пользователя
    ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/b52bd9db-2d47-45aa-9467-dd6483a3ac0b)
 5. Get-запрос для получения истории ссылки на файл истории пользователя
-   ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/22ea93d7-6990-4301-8b60-487d23d99776)
+   ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/22ea93d7-6990-4301-8b60-487d23d99776)   
    Вот что находится в этом файле:   
    ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/b384f0eb-fa6e-49f8-8aaf-8a96d73ab153)   
    Сегмент AVITO_END был добавлен и удален за кадром до создания сегмента AVITO_VOICE_MESSAGES.
