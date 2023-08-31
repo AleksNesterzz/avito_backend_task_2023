@@ -32,7 +32,7 @@
 # ПРИМЕРЫ ЗАПРОСОВ
 Запросы в Postman:
 1. Post-запрос на добавление сегмента
-   ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/225e7c12-7db8-49db-879d-bb9e951940e5)
+   ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/225e7c12-7db8-49db-879d-bb9e951940e5)   
    Добавим еще сегментов : AVITO_PERFORMANCE_VAS, AVITO_DISCOUNT_30 и AVITO_DISCOUNT_50
 2. Delete-запрос на удаление сегмента
    ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/9822fcf7-e25c-48c6-bfdf-957468fcc762)
