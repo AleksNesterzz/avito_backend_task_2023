@@ -218,7 +218,7 @@ func (s *Storage) GetLogs(id int, year_month string) ([][]string, error) {
 	}
 	rows, err := stmt.Query(id, year, month)
 	if err != nil {
-		return nil, fmt.Errorf("error executing GetClientSeg %w", err)
+		return nil, fmt.Errorf("error executing GetClientLogs %w", err)
 	} else {
 		i := 0
 		for rows.Next() {

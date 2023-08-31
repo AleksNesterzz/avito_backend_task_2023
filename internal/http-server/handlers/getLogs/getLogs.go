@@ -34,6 +34,7 @@ func New(loggetter LogGetter) http.HandlerFunc {
 		var req Request
 		err := json.NewDecoder(r.Body).Decode(&req)
 		if err != nil {
+			fmt.Println(req)
 			w.WriteHeader(http.StatusBadRequest)
 			render.JSON(w, r, Response{
 				Status: "error",
@@ -47,19 +48,18 @@ func New(loggetter LogGetter) http.HandlerFunc {
 
 			render.JSON(w, r, Response{
 				Status: "error",
-				Error:  "failed to get client segments"})
+				Error:  "failed to get logs"})
 
 			return
 		}
 		id_string := strconv.Itoa(req.Id)
-		path_to_file := "./csv_output/logs" + id_string + "-" + req.Time + ".csv"
+		path_to_file := "../csv_output/logs" + id_string + "-" + req.Time + ".csv"
 		f2, err := os.OpenFile(path_to_file, os.O_CREATE|os.O_WRONLY, 0644)
 		if err != nil {
-			fmt.Println("error opening file")
+			fmt.Println(err)
 			return
 		}
 		defer f2.Close()
-		//fmt.Println(strings)
 		csv_file := csv.NewWriter(f2)
 
 		err = csv_file.WriteAll(strings)
