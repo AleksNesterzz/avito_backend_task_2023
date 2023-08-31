@@ -13,10 +13,10 @@
 - internal/storage - ошибки связанные с базой данных
 - storage/postgres - запросы к БД
 - scripts содержит shell-скрипт для ожидания поднятия БД в контейнере перед тем, как к нему подключится контейнер приложения
-# Сборка и запуск проекта происходит с помощью команды   
+# Сборка и запуск проекта  
 `docker build -t go-app . && docker-compose up --build go-app`
 Приложение будет готово к использованию после вывода в консоль строки "Postgres is up - executing command"
-# Для запуска тестов тестов можно воспользоваться командой   
+# Для запуска тестов  
  `docker-compose run go-app go test ./.../tests`
 # Что было сделано
 - При инициализации БД происходит создание двух пустых таблиц(segments и clients_segments), нужных для работы API, если они еще не были созданы
@@ -42,8 +42,8 @@
    ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/b52bd9db-2d47-45aa-9467-dd6483a3ac0b)
 5. Get-запрос для получения истории ссылки на файл истории пользователя
    ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/22ea93d7-6990-4301-8b60-487d23d99776)
-   Вот что находится в этом файле:
-   ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/b384f0eb-fa6e-49f8-8aaf-8a96d73ab153)
+   Вот что находится в этом файле:   
+   ![image](https://github.com/AleksNesterzz/avito_backend_task_2023/assets/109950730/b384f0eb-fa6e-49f8-8aaf-8a96d73ab153)   
    Сегмент AVITO_END был добавлен и удален за кадром до создания сегмента AVITO_VOICE_MESSAGES.
 
    
